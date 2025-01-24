@@ -1,3 +1,11 @@
+{{
+    config(
+        materialized='table',
+        location_root='abfss://silver@stdbtdevuseast.dfs.core.windows.net/silver_orders'
+    )
+}}
+
+
 with silver_orders as (select * from {{ ref("bronze_orders") }})
 select
     id,
